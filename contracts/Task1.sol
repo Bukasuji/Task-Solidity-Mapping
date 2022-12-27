@@ -7,7 +7,7 @@ pragma solidity >=0.7.0 <0.9.0;
 contract DatatypesExamples {
     
     int256 public myNumber = -100; // Example of a signed integers
-    uint256 public myOtherNum = 456; // Example of an unsigned integers
+    uint256 public myOtherNum = 46; // Example of an unsigned integers
     bool public datatypeExamples = true; //Example of a boolean
     address public myAddress = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c; //address
 
