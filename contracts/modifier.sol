@@ -4,8 +4,10 @@ pragma solidity >=0.8.0;
 contract Deposit{
 
     uint256 private constant FEE = 3;
+    error InvalidAmount (uint256 sent, uint256 minRequired);
     
     mapping(address=>uint256) public balances;
+    mapping(string=>uint256) public kycDetails;
     address public owner;
     
     struct UserDetails {
@@ -31,7 +33,10 @@ contract Deposit{
     // a modifier that ensures user pays the right fee
     modifier value(uint amt ) {
          if (amt != FEE) {
-             revert("amount too small");
+             revert InvalidAmount({
+                 sent: amt,
+                 minRequired: FEE
+             });
          } else {
              _;
          }
@@ -68,11 +73,12 @@ contract Deposit{
    // function used to set user details and pushed to the array
    function setUserDetails(string calldata name, uint256 age) public {
         detailArr.push(UserDetails(name, age));
+        kycDetails[name] = age;
     }
     
    // function fetches all stored details in the array
-    function getDetail() public view  returns ( UserDetails[] memory ) {
-        return (detailArr);
+    function getDetail(string memory name) public view  returns ( uint) {
+        return  kycDetails[name];
         
     }
 
