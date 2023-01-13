@@ -34,7 +34,7 @@ contract Deposit{
         kycDetails[name] = age;
     }
     
-    // function fetches the age of the person calling it, once name is entered.
+    // function fetches the age of the person calling it, once name is entered from mapping
     function getDetail(string memory name) public view  returns (uint) {
         return  kycDetails[name];
         
