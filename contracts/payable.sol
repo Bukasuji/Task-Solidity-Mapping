@@ -55,8 +55,9 @@ contract Deposit{
     }
 
     //function to increase fund, it has two modifiers
-    function addfund(uint amount) public increaseDeposit value(FEE) {
-        balances[msg.sender] += amount;
+    function addfund() public payable  increaseDeposit value(FEE) {
+        emit FundsDeposited(msg.sender, msg.value);
+        balances[msg.sender] += msg.value;
     }
 
     //function to check balance
