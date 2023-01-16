@@ -48,7 +48,7 @@ contract Deposit{
 
 
      // function to make deposit.
-    function deposit(uint256 amount) public {
+    function deposit(uint amount) public  {
         emit FundsDeposited(msg.sender, amount);
         balances[msg.sender] += amount;
         
@@ -56,6 +56,7 @@ contract Deposit{
 
     //function to increase fund, it has two modifiers
     function addfund(uint amount) public increaseDeposit value(FEE) {
+        emit FundsDeposited(msg.sender, amount);
         balances[msg.sender] += amount;
     }
 
